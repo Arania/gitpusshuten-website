@@ -19,7 +19,7 @@ Why Git Pusshuten?
 
 I am fully aware there are other open source Git and non-Git based deployment solutions like "Capistrano", "Vlad the Deployer", "Gploy", "Git Deploy", "Screwcap", "Deployer", and the list goes on.
 
-Now, I wanted a tool that would handle deployment. And at it's core, that is what it does, and it does it for multiple environments. Another thing I miss in other git-based deployment solutions is the ability to push, __not only a branch__, but also by __tag__ or __ref__. We're using __Git__, why not use more of what it has to offer?
+Now, I wanted a tool that would handle deployment. And at it's core, that is what it does, and it does it for multiple environments. Another thing I miss in other git-based deployment solutions is the ability to push, __not only by branch__, but also by __tag__ or __ref__. Also, I want to have __multiple__ environments. We're using __Git__, why not use more of what it has to offer?
 
 Here is how you would push your application to __staging__ or __production__ by either __branch__, __tag__ or __ref__.
 

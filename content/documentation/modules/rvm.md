@@ -2,6 +2,7 @@
 title: RVM (Ruby Version Manager)
 ---
 
+[RVM (Ruby Version Manager) Website](http://rvm.beginrescueend.com/)
 
 You can add RVM to the modules in your configuration file, like so:
 
@@ -26,7 +27,6 @@ gitpusshuten rvm install-ruby for production
 gitpusshuten rvm uninstall-ruby for production
 gitpusshuten rvm remove-ruby for production
 gitpusshuten rvm set-default-ruby for production
-
 <% end %>
 
 install

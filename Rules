@@ -24,6 +24,7 @@ route '/stylesheets/*/' do
   item.identifier.chop + '.css'
 end
 
+
 ##
 # Images
 compile '/images/*/' do
@@ -33,16 +34,9 @@ route '/images/*/' do
   item.identifier.chop + '.' + item[:extension]
 end
 
-##
-# Documentation and Guide pages
-compile '/documentation/|/documentation/*/' do
-  filter :erb
-  filter :kramdown
-  layout 'default_with_sidebar'
-end
 
 ##
-# Main Pages
+# Pages
 compile '*' do
   filter :erb
   filter :kramdown
@@ -53,4 +47,6 @@ route '*' do
   item.identifier + 'index.html'
 end
 
+##
+# Layout Renderer
 layout '*', :haml, :format => :html5

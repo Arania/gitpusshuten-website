@@ -2,6 +2,8 @@
 title: (Phusion) Passenger
 ---
 
+[Phusion Passenger Website](http://www.modrails.com/)
+
 You can add Passenger to the modules in your configuration file, like so:
 
 <% code do %>

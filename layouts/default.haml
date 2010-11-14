@@ -21,13 +21,22 @@
           %strong Deployment
       .navigation
         %ul
-          %li= link_to_unless_current 'About', '/about/'
-          %li= link_to_unless_current 'Documentation', '/documentation/'
-          %li= link_to_unless_current 'Guides', '/guides/'
-          %li= link_to 'GitHub', 'http://github.com/meskyanichi/gitpusshuten'
+          %li= custom_link_to 'About', '/about/'
+          %li= custom_link_to 'Documentation', '/documentation/'
+          %li= custom_link_to 'Guides', '/guides/'
+          %li= custom_link_to 'GitHub', 'http://github.com/meskyanichi/gitpusshuten'
       .navigation-graphic
-      .content
-        = yield
+      - if not @item.path =~ /documentation/
+        .content
+          = yield
+      - else
+        .content
+          .details
+            %h1= @item[:title]
+
+            = yield
+          = render 'sidebar'
+
         
     :javascript
       var woo_settings = {idle_timeout:'300000', domain:'gitpusshuten.com'};

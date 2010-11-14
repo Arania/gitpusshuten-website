@@ -16,3 +16,7 @@ def image_tag(url, options = {})
   html += "/>"
   html
 end
+
+def custom_link_to(name, url)
+  @item.path =~ /#{name.downcase}/ ? "<span class='active'>#{name}</span>" : link_to(name, url)
+end
