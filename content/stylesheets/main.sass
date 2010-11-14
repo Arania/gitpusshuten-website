@@ -1,0 +1,102 @@
+$black: #2b2b2b
+$gray: #c3c3c3
+$dark-gray: #5c5c5c
+$red: #f30
+$orange: #f90
+
+body
+  font-family: helvetica, tahoma, arial
+  background: #ffffff
+  color: $black
+  font-size: 1em
+  
+a
+  text-decoration: none
+  &:link, &:visited
+    color: $red
+    border-bottom: 1px dotted #f30
+  &:hover
+    color: $orange
+
+strong
+  font-weight: bold
+
+em
+  font-style: italic
+
+#wrapper
+  width: 900px
+  margin: auto
+  
+  .heading
+    width: 290px
+    margin: 50px auto 0px auto
+    text-align: right
+    h1
+      font-size: 2.8em
+    h2
+      font-size: 1.25em
+    .highlight
+      color: $gray
+    .text
+      text-align: left
+      margin: 5px 0px 0px 9px
+    
+  .navigation
+    margin: 30px 0px 0px 0px
+    text-align: center
+    ul
+      li
+        display: inline
+        padding: 5px
+        a
+          font-size: 1.2em
+          color: $red
+          &:hover
+            color: $black
+        span.active
+          font-size: 1.5em
+  .navigation-graphic
+    background-image: url('/images/heading.gif')
+    background-repeat: no-repeat
+    height: 50px
+    margin: 0px 0px 0px 0px
+  .content
+    padding: 0px 10px 0px 25px
+    margin: 0px 0px 25px 0px
+    h1
+      font-size: 1.5em
+      margin: 30px 0px 10px 0px
+    p
+      padding: 5px 0px 5px 0px
+      line-height: 150%
+      
+      code
+        background-color: $black
+        color: #fff
+        padding: 3px
+        -moz-border-radius: 5px
+        -webkit-border-radius: 5px
+    
+    ul
+      margin: 10px 0px 15px 25px
+      li
+        list-style-type: disc
+        margin: 0px 0px 5px 0px
+        
+    .details
+      float: left
+      width: 550px
+    .sidebar
+      float: right
+      width: 300px
+      
+      ul
+        li
+          list-style-type: none
+          font-size: 1.2em
+        ul
+          li
+            list-style-type: disc
+            margin: 0px 0px 5px 5px
+            font-size: 1em

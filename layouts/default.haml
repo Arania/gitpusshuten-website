@@ -1,0 +1,42 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %title
+      Git Pusshuten (プッシュ点ー) - #{@item[:title]}
+    %link{:href => "/stylesheets/reset.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "/stylesheets/main.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "/stylesheets/coderay.css", :rel => "stylesheet", :type => "text/css"}/
+    %meta{:content => "nanoc 3.1.5", :name => "generator"}/
+  %body
+    #wrapper
+      .heading
+        %h2 プッシュ点ー
+        %h1
+          Git
+          %span.highlight Pusshuten
+        .text
+          %strong Heavenly
+          Git-based
+          %strong Deployment
+      .navigation
+        %ul
+          %li= link_to_unless_current 'About', '/about/'
+          %li= link_to_unless_current 'Documentation', '/documentation/'
+          %li= link_to_unless_current 'Guides', '/guides/'
+          %li= link_to 'GitHub', 'http://github.com/meskyanichi/gitpusshuten'
+      .navigation-graphic
+      .content
+        = yield
+        
+    :javascript
+      var woo_settings = {idle_timeout:'300000', domain:'gitpusshuten.com'};
+      (function(){
+      var wsc = document.createElement('script');
+      wsc.src = document.location.protocol+'//static.woopra.com/js/woopra.js';
+      wsc.type = 'text/javascript';
+      wsc.async = true;
+      var ssc = document.getElementsByTagName('script')[0];
+      ssc.parentNode.insertBefore(wsc, ssc);
+      })();
+    
