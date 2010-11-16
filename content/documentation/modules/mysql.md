@@ -1,5 +1,5 @@
 ---
-title: "Command: MySQL"
+title: "Module: MySQL"
 ---
 
 You can add MySQL to the modules in your configuration file, like so:
