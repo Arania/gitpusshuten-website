@@ -1,5 +1,5 @@
 ---
-title: Apache
+title: "Module: Apache"
 ---
 
 You can add Apache to the modules in your configuration file, like so:
@@ -18,6 +18,9 @@ List of commands
 ================
 
 <% code do %>
+gitpusshuten apache install to staging
+gitpusshuten apache download-configuration from staging
+gitpusshuten apache upload-configuration to staging
 gitpusshuten apache update-configuration for staging
 gitpusshuten apache create-vhost for production
 gitpusshuten apache delete-vhost from production
@@ -30,56 +33,75 @@ gitpusshuten apache reload production environment
 <% end %>
 
 
+install
+-------
+
+Installs Apache2 (Standalone) on your server.  
+**Ruby / Phusion Passenger users should install Apache2 through the Passenger module. Not with this command!**
+
+
+download-configuration
+----------------------
+
+Downloads the Apache2 configuration file to the `.gitpusshuten/apache2` directory so you can make quick local modifications to this file.
+
+
+upload-configuration
+----------------------
+
+Uploads the Apache2 configuration file from your `.gitpusshuten/apache2` directory back to the server, overwriting the existing one.
+
+
 update-configuration
-====================
+--------------------
 
 This will update your Apache configuration on the remote server. It will also create a backup of your current one in case something goes wrong. This is currently only useful when you are using [Phusion Passenger](/documentation/modules/passenger/) and would like to update the path to the current Passenger and/or Ruby version. This command will handle all of it for you.
 
 
 create-vhost
-============
+------------
 
 Creates a (template) vhost locally for the specified environment which you can configure and immediately push to the desired environment.
 
 
 delete-vhost
-============
+------------
 
 Deletes a vhost from the remote server for the specified environment.
 
 
 upload-vhost
-============
+------------
 
 Uploads your local vhost to the server for the specified environment.
 
 
 download-vhost
-==============
+--------------
 
 Downloads the remote vhost (if it exists) from the server for the specified environment.
 This is particularly useful since you probably don't want to check the vhost into your repository and thus, can download, modify and upload it when needed.
 
 
 start
-=====
+-----
 
 Starts the Apache web server
 
 
 stop
-====
+----
 
 Stops the Apache web server
 
 
 restart
-=======
+-------
 
 Restarts the Apache web server
 
 
 reload
-======
+------
 
 Reloads the Apache web server
