@@ -1,10 +1,8 @@
 ---
-title: (Phusion) Passenger
+title: "Command: Passenger"
 ---
 
-[Phusion Passenger Website](http://www.modrails.com/)
-
-You can add Passenger to the modules in your configuration file, like so:
+You can add ([Phusion](http://www.modrails.com/)) Passenger to the modules in your configuration file, like so:
 
 <% code do %>
 pusshuten "My Application", :staging do
@@ -28,22 +26,22 @@ gitpusshuten passenger restart for production
 <% end %>
 
 install
-=======
+-------
 
 Installs Phusion Passenger with either Apache or NginX on your server.
 It'll automatically install all dependencies for you as well.
 
 
 update
-======
+-------
 
-Updates Phusion Passenger and NginX or Apache web server if a new version is available
+Updates Phusion Passenger and NginX or Apache web server if a new version is available.
 
 
 restart
-=======
+-------
 
-Manually restarts the Passenger instance for the specified environment
+Manually restarts the Passenger instance for the specified environment.
 
 
 Requirements

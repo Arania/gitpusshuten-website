@@ -1,5 +1,5 @@
 ---
-title: Bundler
+title: "Module: Bundler"
 ---
 
 You can add Bundler to the modules in your configuration file, like so:
@@ -15,8 +15,6 @@ end
 With Bundler enabled, it'll add a post deploy hook to the stack of deploy hooks that invokes the `bundle install --without test development` command after pushing your application to ensure all gems are installed for your application.
 
 Adding the Bundler module also enables the `bundler` CLI command. There is only one command: `bundle`.
-
-To use this you basically run it like so:
 
 <% code do %>
 gitpusshuten bundler bundle for staging
