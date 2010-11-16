@@ -2,8 +2,7 @@
 title: Deployment hooks
 ---
 
-Aside of the configuration file that gets generated for you, there is also a **hooks.rb** file.
-In here you can define any **environment specific** pre and post deployment hooks on the remote server.
+The other file at your disposal is the `.gitpusshuten/hooks.rb` file, in which you can define `pre` and `post` deploy hooks for the specified environments. This file doesn't really need much explanation.
 
 <% code do %>
 perform_on :staging, :production do
@@ -17,6 +16,16 @@ perform_on :staging, :production do
 end
 <% end %>
 
-Now, I couldn't think of anything creative for the **pre** deploy hook, so for the sake of this example I'll just echo out something. As you might have guessed, the **pre** hook is what gets performed on the server before you push your application. The **post** hook is what gets performed after the application has been deployed.
+All these commands will run inside your application root on the remote server for the specified environment.
 
-You may add as many **pre** and **post** deploy hooks as you want. You can also specify on which environment they have to invoke.
+You may add as many `pre` and `post` deploy hooks as you want. You can also specify on which environment they have to invoke.
+
+__Modules__ may also add deploy hooks. For example, the __Passenger__ module, when defined in your `.gitpusshuten/config.rb`, will add a deploy hook that already runs this command:
+
+<% code do %>
+post "Restart Passenger" do
+  run 'mkdir -p tmp; touch tmp/restart.txt'
+end
+<% end %>
+
+So you don't have to.
