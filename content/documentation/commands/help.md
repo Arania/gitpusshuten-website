@@ -1,5 +1,5 @@
 ---
-title: Help
+title: "Command: Help"
 ---
 
 Bring up the main help screen by running:

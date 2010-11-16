@@ -1,5 +1,5 @@
 ---
-title: Initialize
+title: "Command: Initialize"
 ---
 
 Initializes Git Pusshuten with your working directory. You want to run this command from within the root of your application.

@@ -1,5 +1,5 @@
 ---
-title: User
+title: "Command: User"
 ---
 
 User has a bunch of commands at it's disposal.
@@ -9,17 +9,19 @@ gitpusshuten user add to production
 gitpusshuten user reconfigure for production
 gitpusshuten user remove from production
 gitpusshuten user install-ssh-key to staging
-gitpusshuten user install-root-ssh-key to staging  
+gitpusshuten user install-root-ssh-key to staging
+$(gitpusshuten user login to staging)
+$(gitpusshuten user login-root to production)
 <% end %>
 
 add
-===
+---
 
 Adds a user to the specified environment. It uploads you SSH key (if you have one) and then further configures the user.
 
 
 reconfigure
-====
+-----------
 
 Reconfigures the user, keeping all applications, and the user itself in tact. All this does is it overwrites the files it configured when you initially added the user. These files include:
 
@@ -33,18 +35,30 @@ Reconfigures the user, keeping all applications, and the user itself in tact. Al
 
 
 remove
-======
+------
 
 Removes an existing user from the specified environment. This also erases the users home directory in which the user's applications reside. 
 
 
 install-ssh-key
-===============
+---------------
 
 Installs the user's local ssh key to the user of the specified environment.
 
 
 install-root-ssh-key
-====================
+--------------------
 
 Installs the user's local ssh key to the root user of the specified environment.
+
+
+$(gitpusshuten user login to staging)
+-------------------------------------
+
+Logs the user in to the staging environment.
+
+
+$(gitpusshuten user login-root to production)
+---------------------------------------------
+
+Logs the user in to the production environment as root.

@@ -11,9 +11,3 @@ Once you have Ruby up and running, simply install the gem and you're ready to go
 <% code do %>
 gem install gitpusshuten
 <% end %>
-
-Once installed, move into the root directory of your application and run
-
-<% code do %>
-gitpusshuten initialize
-<% end %>

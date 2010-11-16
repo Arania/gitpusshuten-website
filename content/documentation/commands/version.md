@@ -1,5 +1,5 @@
 ---
-title: Version
+title: "Command: Version"
 ---
 
 Displays the version of the currently installed Git Pusshuten Gem.

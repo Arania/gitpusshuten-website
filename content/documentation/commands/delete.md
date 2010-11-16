@@ -1,12 +1,22 @@
 ---
-title: Delete
+title: "Command: Delete"
 ---
 
-Deletes an entire application from the remote server. e.g. `/var/applications/my_application.staging` will be removed.
-
-You specify the environment of the application you wish to delete.
+Deletes an entire application from the remote server.
+If you for example have the following configuration:
 
 <% code do %>
-gitpusshuten delete staging environment
+pusshuten 'My Application', :production do
+  ...
+end
+<% end %>
+
+Then when you push your application, it'll be deployed to `/var/applications/my_application.production` on the server.
+
+If you wish to delete the `/var/applications/my_application.production` directory, you simply run the following command:
+
+<% code do %>
 gitpusshuten delete production environment
 <% end %>
+
+and the `my_application.production` directory will be removed.
