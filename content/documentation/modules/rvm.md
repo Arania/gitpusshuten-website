@@ -1,5 +1,5 @@
 ---
-title: "Command: RVM (Ruby Version Manager)"
+title: "Module: RVM (Ruby Version Manager)"
 ---
 
 You can add [RVM (Ruby Version Manager)](http://rvm.beginrescueend.com/) to the modules in your configuration file, like so:

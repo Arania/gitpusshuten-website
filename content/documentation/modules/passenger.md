@@ -1,5 +1,5 @@
 ---
-title: "Command: Passenger"
+title: "Module: Passenger"
 ---
 
 You can add ([Phusion](http://www.modrails.com/)) Passenger to the modules in your configuration file, like so:
