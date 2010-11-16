@@ -2,16 +2,16 @@
 title: Configuring your configuration file
 ---
 
-Next, let's take a look at the configuration file.
+Upon __initialization__ of GitPusshuten with your application you get a `.gitpusshuten/config.rb` file.
+
+This file will basically contain all the "environment" configuration.
+Here is a sample of what the _minimum_ configuration looks like.
 
 <% code do %>
 pusshuten 'My Application', :staging, :production do
   authorize do |a|
     a.user       = 'gitpusshuten'
-    # a.password   = 'my-password'
-    # a.passphrase = 'my-ssh-passphrase'
     a.ip         = '123.45.678.90'
-    a.port       = '22'
   end
 
   applications do |a|
@@ -20,9 +20,72 @@ pusshuten 'My Application', :staging, :production do
 end
 <% end %>
 
-This is basically all you need to setup both a **staging** as well as a **production** environment. These variables should be quite straightforward. By default, the **password** and **passphrase** are commented out. Why? Because It's safer to use a SSH key rather than a password. But, you can choose whichever you prefer! Also, when using an SSH key with a passphrase, you can specify the passphrase for Git Pusshuten when trying to interact with the server.
+This is the bare minimum, and with this, you can already start pushing your application to multiple environments. In this case, you can push it to a **staging** and **production** environment. We will get to the **pushing** of your application in a later chapter. 
 
-So let's talk about the **applications** block for a second.
+Let's take a look at the individual parts of this configuration block.
+
+<% code do %>
+pusshuten 'My Application', :staging, :production do
+<% end %>
+
+The `pusshuten` method is used to define (or overwrite if one already exists) a configuration block. The first argument would be the name of your application. The second argument takes an array of "environments". You can add as many as you like. We are now defining the `:staging, :production` environments.
+
+You can define multiple `pusshuten` configuration blocks. For example, you could define something like this first, where you define the `:staging` and `:production` environments in one configuration block.
+
+<% code do %>
+pusshuten 'My Application', :staging, :production do
+  authorize do |a|
+    a.user       = 'gitpusshuten'
+    a.ip         = '123.45.678.90'
+  end
+  ...
+end
+<% end %>
+
+Then, you can define another block, just for the `:production` environment, like so:
+
+<% code do %>
+pusshuten 'My Application', :production do
+  authorize do |a|
+    a.ip         = '098.76.543.21'
+  end
+end
+<% end %>
+
+What you accomplished with this is that you defined the `:staging` and `:production` environments, and made them completely identical, except for the **ip** address, since the `:production` was re-defined and overwrote the **ip** configuration, which means the `:production` environment will run on a different server than the `:staging` environment.
+
+_"So, what exactly is an environment and why would I want to use multiple?"_
+
+Well, for one, it's nice to have a remote environment, that isn't the _production_ environment because then you can deploy an unstable or unconfirmed/unfinished version of your application. This could be useful if you're working for a client and want to show progress. Or, if you're working on a SaaS application and want to see if it deploys correctly to your remote environment before pushing it to the production environment (which is what all your user access). Maybe you want to have a `:beta` environment which is only accessible to beta users.
+
+And there are probably more useful ways to utilize this feature.
+
+**Next, let's talk about the actual "configuration".**
+
+<% code do %>
+authorize do |a|
+  a.user       = 'gitpusshuten'
+  a.password   = 'my-password'
+  a.passphrase = 'my-ssh-passphrase'
+  a.ip         = '123.45.678.90'
+  a.port       = '22'
+end
+<% end %>
+
+These are the variables for your remote environment.  
+
+**user** is required. This will become a new user on your remote server which will handle various things, such as deployments.
+
+
+**password** is not required. Either set this, or have an SSH key, or be prompted every time you connect to your remote environment.
+
+**passphrase** is not required. Some people use "passphrases" which are can set for your SSH keys. If you do that as well, you can specify your passphrase here.
+
+**ip** is required. This will be the ip that points to your server.
+
+**port** is not required. If this is not specified, it defaults to 22, which is the default SSH port.
+
+**Next, is the applications block**
 
 <% code do %>
 applications do |a|
@@ -30,86 +93,23 @@ applications do |a|
 end
 <% end %>
 
-This block basically allows you to define the location to where your applications will be stored. Now, assume we have a **staging** environment and a **production** environment. When you push both environments to the server you will get two different directories, namely:
+**path** is required. This is a very simple block, since it only takes one parameter which is the path to the where you would like to store all your applications for the specified user.
+
+And that covers it for the __core__ functionality of GitPusshuten. However, where GitPusshuten really shines is when you start using __modules__. So to briefly show you a module setup, look at the code block below.
 
 <% code do %>
-/var/applications/my_application.staging
-/var/applications/my_application.production
-<% end %>
-
-So you are now able to push anything that is unstable, still in development, or just to preview to a client, to the *staging environment*. Once you confirm that the particular version of your application is ready for production, you push it to production.
-
-You can of course nest multiple different applications in the same **/var/applications/** directory. The application's deployment directory is based on the combination of the "application name" and the "environment". These are defined here:
-
-<% code do %>
-pusshuten 'My Application', :staging, :production do
-<% end %>
-
-Here "My Application" is the application name, it will be somewhat "sanitized" to "my_application". Then the rest of the arguments are basically to define the environments. ":staging" and ":production" use the same configuration in this case. The only difference being the location to where are pushed.
-
-Additionally you can share the same configuration between both environments, and then overwrite or append configuration by defining a new configuration block, like so:
-
-<% code do %>
-pusshuten 'My Application', :staging, :production do
-  authorize do |a|
-    a.user   = 'gitpusshuten'
-    a.ip     = '123.45.678.90'
-    a.port   = '22'
-  end
-end
-
-pusshuten 'My Application', :production do
-  authorize do |a|
-    a.ip     = '098.76.543.21'
-    a.port   = '44'
-  end
+modules do |m|
+  m.add :bundler
+  m.add :active_record
+  m.add :passenger
+  m.add :nginx
+  m.add :rvm
+  m.add :mysql
 end
 <% end %>
 
-In the above example both the ":staging" and ":production" environment share the same user, but the ":production" environment overwrites the "ip" and "port" to point to a different server. So in this case, the staging and production environments are run on separate servers.
+I will not go into detail about what these modules actually do. But I will tell you this much:
 
-So that's basically all there is to configuring Git Pusshuten's __core__!
+_"With the above defined modules, you've defined your application's environment. With this in place you can have your application up and running on a **new** Ubuntu installation in a matter of minutes."_
 
-If you want to extend this functionality with more **environment specific** configuration, this is easily done by adding modules.
-So assume you want to use **Active Record, Bundler, RVM, Phusion Passenger and NginX** you would simply define it like so:
-
-<% code do %>
-pusshuten 'My Application', :staging, :production do
-  authorize do |a|
-    # authorize config
-  end
-
-  applications do |a|
-    # applications config
-  end
-
-  modules do |m|
-    m.add :bundler
-    m.add :active_record
-    m.add :passenger
-    m.add :nginx
-    m.add :rvm
-  end
-end
-<% end %>
-
-A module can enable two things:
-
-* New CLI Commands
-* New Deployment Hooks
-
-For example, when you add the **Bundler** module, you gain access to a new CLI command, and at the same time, it'll add a deployment hook that'll bundle the gems post-deployment for your application. The deploy hook will first check the remote environment to see if the Bundler gem is installed, if not it'll install it and then proceed to run the `bundle install` command. The command that has been added to the CLI in this case will allow you to manually run the "bundle install" command on demand, without the need to deploy your application. The syntax of the command looks like this:
-
-<% code do %>
-gitpusshuten bundler bundle for staging # or production
-<% end %>
-
-The **ActiveRecord** module does not add any CLI commands but it does perform the `rake db:migrate` deploy hook for you when you deploy your application to ensure the database is up to date.
-
-The Passenger, NginX and RVM commands will help you provision and manage your remote environment.
-
-* __RVM__ helps you install/manage/change Ruby versions for your apps
-* __Passenger__ helps you install a webserver (NginX or Apache)
-* __NginX__ helps you config the NginX config file for easy "vhost" management
-
-Read more about modules [here](/documentation/modules/).
+Check out the individual module pages to learn more about them.
