@@ -206,7 +206,7 @@ This will upload your vhost in the proper NginX vhosts directory Git Pusshuten a
 Conclusion
 ==========
 
-Now, if I wouldn't explain anything to you guys, this is what you'd end up with for this guide:
+Now, if I wouldn't have explained anything to you guys, this is what you'd end up with for this guide:
 
 <% code do %>
 gem install gitpusshuten
@@ -227,4 +227,4 @@ gitpusshuten nginx upload-vhost to staging
 * NginX's vhost file
 
 That's it. From a **new** Ubuntu 10.04 installation, to a deployed Ruby on Rails application in minutes.
-I did a speed run for myself to see how fast I could get my application up and running, I did it in 7 minutes. And that was mainly 6 minutes waiting on installations to finish. :)
+I did a speed run for myself to see how fast I could get my application up and running, I did it in about 10 minutes. And that was mainly 9 minutes waiting on installations to finish. :) Also, the time it takes to install everything of course depends on your server specs.
