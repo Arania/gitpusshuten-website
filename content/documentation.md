@@ -2,4 +2,4 @@
 title: Documentation
 ---
 
-Choose a topic on the right
+Choose a topic on the right.
