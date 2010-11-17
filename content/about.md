@@ -3,35 +3,37 @@ title: About Git Pusshuten (プッシュ点ー)
 ---
 
 What is Git Pusshuten?
-================================
+======================
 
 Git Pusshuten is a Git-based deployment [Ruby Gem](http://rubygems.org/gems/gitpusshuten).
+Not only can it push your applications by **branch**, **tag** or **ref** to multiple environments, which is what it does at it's core, it also has a modular architecture to enable you to define **YOUR** environment using, what I call **modules**, and act based on that.
+
+I feel that I am not very good at giving clear and concise explanations, so I have prepared a little video to actually __show__ you what it __can__ do.
+
+[video here]
 
 
 What does it do?
 ================
 
-Nothing, and everything! Git Pusshuten, at it's core, is an easy to use CLI utility that allows you to use Git to push your applications to your remote server for multiple environments (e.g. staging, production). It provides you with pre and post deploy hooks for the push process. Git Pusshuten also helps you setup a proper "Git Pusshuten Ready" environment on your server with a single command.
+Git Pusshuten, at it's core, is an easy to use CLI utility that allows you to use Git to push your applications to your remote server for multiple environments (e.g. staging, production). It provides you with "pre" and "post" deploy hooks to go with the push process. Git Pusshuten also helps you setup a proper "Git Pusshuten Ready" environment on your server with a single command.
 
+By defining the correct modules, you could have, for example, a full Ruby on Rails environment set up on a **new** Ubuntu installation within about 10-15 minutes. Refer to [this guide](/guides/setting-up-a-full-ruby-on-rails-environment/) if you want to try that or check out the video above!
 
 Why Git Pusshuten?
 ==================
 
 I am fully aware there are other open source Git and non-Git based deployment solutions like "Capistrano", "Vlad the Deployer", "Gploy", "Git Deploy", "Screwcap", "Deployer", and the list goes on.
 
-Now, I wanted a tool that would handle deployment. And at it's core, that is what it does, and it does it for multiple environments. Another thing I miss in other git-based deployment solutions is the ability to push, __not only by branch__, but also by __tag__ or __ref__. Also, I want to have __multiple__ environments. We're using __Git__, why not use more of what it has to offer?
+What sets Git Pusshuten apart of (as far as I know) everything else?
 
-Here is how you would push your application to __staging__ or __production__ by either __branch__, __tag__ or __ref__.
+* The ability easily to push to multiple environments
+* The ability to push based on **branch**, **tag** or **ref**.
+* The ability to have a **new Ubuntu** server provisioned and "deploy ready" in a few minutes
+* The ability to be done configuring within 10 seconds
+* The ability to be modular and extensible, a way to actually **define** my environment, even to the extent that it doesn't even have to be a Ruby app.
 
-<% code do %>
-  gitpusshuten push branch develop to staging
-  gitpusshuten push tag 1.3.2 to production
-  gitpusshuten push ref f7bcec6a23bcb9c7695beb060c11d3b7b3e80702 to staging
-<% end %>
-
-Next, I wanted a way to actually provision/manage my environment without actually manually going into it every single time. When I deploy a new application, I want to have my application up and running as fast as possible.
-
-Enter [Git Pusshuten](http://github.com/meskyanichi/gitpusshuten). Read about __modularity__ below.
+Yes, you've guessed it. Git Pusshuten isn't just about **application deployment**, it is also about **server provisioning for "Git Pusshuten" application deployment**. But again, NOT at it's core. At it's core it only understands Git, and nothing else. When you define modules, it learns about your environment.
 
 
 Who is it for?
@@ -60,6 +62,7 @@ __As for the deployment environment, we want to use:__
 * Ruby (Managed with RVM, [Ruby Version Manager](http://rvm.beginrescueend.com/))
 * [NginX Webserver](http://wiki.nginx.org/Main)
 * [Phusion Passenger](http://www.modrails.com/) (NginX Module)
+* MySQL
 
 Let's tell Git Pusshuten we're using this by defining the modules in the configuration file.
 
@@ -71,19 +74,15 @@ Let's tell Git Pusshuten we're using this by defining the modules in the configu
     m.add :passenger
     m.add :nginx
     m.add :rvm
+    m.add :mysql
   end
 <% end %>
 
-That's it. You are just minutes from now your application will be up and running on a __fresh Ubuntu installation__ with the above mentioned specifications, and you've never even had to manually SSH into your server either.
+That's it. You are just minutes away from having your application up and running on a __new Ubuntu installation__ with the above mentioned specifications, and you've never even had to manually SSH into your server either.
 
-_"But aside of the above mentioned modules, I'd like to change my SSH port, maybe lock it down with a firewall, etc. etc."_
+_"But I would like to use Apache2 instead of NginX"_
 
-That's nice. Fork the project, write a module and share it on [GitHub](http://github.com/) with the rest of the community. : )
-
-Now, you might be saying: _"Well, this tool isn't just about __deployment__, it also provisions/configures my environment."_
-
-This is correct, and I'm using the term __modules__ as an excuse. It's not the __core__ functionality. The __core__ functionality is deployment. The environment specific functionality are the __modules__, which, by default, are turned __OFF__.
-
+Sure, just change `m.add :nginx` into `m.add :apache`. Now, obviously there aren't a lot of modules to pick from right now. I have added most of what I need. If you want more then you can request it on [GitHub](http://github.com/), or better yet, fork and write it yourself (it's really easy) and ask me to merge it into the main project.
 
 Requirements
 ============
