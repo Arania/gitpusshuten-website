@@ -9,13 +9,10 @@ Here is a sample of what the _minimum_ configuration looks like.
 
 <% code do %>
 pusshuten 'My Application', :staging, :production do
-  authorize do |a|
-    a.user       = 'gitpusshuten'
-    a.ip         = '123.45.678.90'
-  end
-
-  applications do |a|
-    a.path = '/var/applications/'
+  configure do |c|
+    c.user  = 'gitpusshuten'
+    c.ip    = '123.45.678.90'
+    c.path  = '/var/applications'
   end
 end
 <% end %>
@@ -34,11 +31,11 @@ You can define multiple `pusshuten` configuration blocks. For example, you could
 
 <% code do %>
 pusshuten 'My Application', :staging, :production do
-  authorize do |a|
-    a.user       = 'gitpusshuten'
-    a.ip         = '123.45.678.90'
+  configure do |c|
+    c.user  = 'gitpusshuten'
+    c.ip    = '123.45.678.90'
+    c.path  = '/var/applications'
   end
-  ...
 end
 <% end %>
 
@@ -46,8 +43,8 @@ Then, you can define another block, just for the `:production` environment, like
 
 <% code do %>
 pusshuten 'My Application', :production do
-  authorize do |a|
-    a.ip         = '098.76.543.21'
+  configure do |c|
+    c.ip    = '09.876.54.321'
   end
 end
 <% end %>
@@ -63,12 +60,13 @@ And there are probably more useful ways to utilize this feature.
 **Next, let's talk about the actual "configuration".**
 
 <% code do %>
-authorize do |a|
-  a.user       = 'gitpusshuten'
-  a.password   = 'my-password'
-  a.passphrase = 'my-ssh-passphrase'
-  a.ip         = '123.45.678.90'
-  a.port       = '22'
+configure do |c|
+  c.user       = 'gitpusshuten'
+  c.password   = 'my-password'
+  c.passphrase = 'my-ssh-passphrase'
+  c.ip         = '123.45.678.90'
+  c.port       = '22'
+  c.path       = '/var/applications'
 end
 <% end %>
 
@@ -85,15 +83,7 @@ These are the variables for your remote environment.
 
 **port** is not required. If this is not specified, it defaults to 22, which is the default SSH port.
 
-**Next, is the applications block**
-
-<% code do %>
-applications do |a|
-  a.path = '/var/applications/'
-end
-<% end %>
-
-**path** is required. This is a very simple block, since it only takes one parameter which is the path to the where you would like to store all your applications for the specified user.
+**path** is required. Takes the path to the where you would like to store all your applications for the specified user. (This path may be used for multiple applications, not just one)
 
 And that covers it for the __core__ functionality of GitPusshuten. However, where GitPusshuten really shines is when you start using __modules__. So to briefly show you a module setup, look at the code block below.
 
