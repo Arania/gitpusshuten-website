@@ -19,7 +19,7 @@ With Active Record enabled, it'll add two post deploy hooks to the stack.
 
 First of all, to enable multi-environment databases, the first hook will look for the database.yml.{environment}.
 
-For example, if we run: `gitpusshuten push branch master to production` it will look for **app_root/config/database.yml.production**. If the file exists, it'll rename it from **database.yml.production** to **database.yml**, overwriting (if it exists) the **config/database.yml**.
+For example, if we run: `heavenly push branch master to production` it will look for **app_root/config/database.yml.production**. If the file exists, it'll rename it from **database.yml.production** to **database.yml**, overwriting (if it exists) the **config/database.yml**.
 
 If it is not found, it will ignore this process and leave the **config/database.yml** as is.
 

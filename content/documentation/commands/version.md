@@ -7,5 +7,5 @@ keywords: git, git pusshuten, ruby, command, version
 Displays the version of the currently installed Git Pusshuten Gem.
 
 <% code do %>
-gitpusshuten version
+heavenly version
 <% end %>

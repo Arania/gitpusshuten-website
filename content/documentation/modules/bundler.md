@@ -19,7 +19,7 @@ With Bundler enabled, it'll add a post deploy hook to the stack of deploy hooks 
 Adding the Bundler module also enables the `bundler` CLI command. There is only one command: `bundle`.
 
 <% code do %>
-gitpusshuten bundler bundle for staging
+heavenly bundler bundle for staging
 <% end %>
 
 And it'll install the gems for the application in the staging environment. In most cases this isn't needed since it'll invoke it after every `push` command to ensure they are installed. This command is particularly useful when you change ruby versions and don't have the gems installed any longer. Then you can just re-bundle the gems for your application without the need of a `push`.

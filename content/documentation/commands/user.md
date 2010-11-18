@@ -7,13 +7,13 @@ keywords: git, git pusshuten, ruby, command, user
 User has a bunch of commands at it's disposal.
 
 <% code do %>
-gitpusshuten user add to production
-gitpusshuten user reconfigure for production
-gitpusshuten user remove from production
-gitpusshuten user install-ssh-key to staging
-gitpusshuten user install-root-ssh-key to staging
-$(gitpusshuten user login to staging)
-$(gitpusshuten user login-root to production)
+heavenly user add to production
+heavenly user reconfigure for production
+heavenly user remove from production
+heavenly user install-ssh-key to staging
+heavenly user install-root-ssh-key to staging
+$(heavenly user login to staging)
+$(heavenly user login-root to production)
 <% end %>
 
 add
@@ -54,13 +54,13 @@ install-root-ssh-key
 Installs the user's local ssh key to the root user of the specified environment.
 
 
-$(gitpusshuten user login to staging)
+$(heavenly user login to staging)
 -------------------------------------
 
 Logs the user in to the staging environment.
 
 
-$(gitpusshuten user login-root to production)
+$(heavenly user login-root to production)
 ---------------------------------------------
 
 Logs the user in to the production environment as root.

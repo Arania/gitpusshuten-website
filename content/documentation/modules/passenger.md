@@ -22,9 +22,9 @@ List of commands
 ================
 
 <% code do %>
-gitpusshuten passenger install for staging
-gitpusshuten passenger update for staging
-gitpusshuten passenger restart for production
+heavenly passenger install for staging
+heavenly passenger update for staging
+heavenly passenger restart for production
 <% end %>
 
 install

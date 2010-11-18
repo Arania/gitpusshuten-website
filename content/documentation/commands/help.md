@@ -7,7 +7,7 @@ keywords: git, git pusshuten, ruby, command, help
 Bring up the main help screen by running:
 
 <% code do %>
-gitpusshuten help
+heavenly help
 <% end %>
 
 which looks something like this:
@@ -33,7 +33,7 @@ Git Pusshu Ten
 
 [Command Specific Help]
 
-  gitpusshuten help <command>
+  heavenly help <command>
 
 For more information, visit: http://gitpusshuten.com/
 <% end %>
@@ -41,7 +41,7 @@ For more information, visit: http://gitpusshuten.com/
 You can also invoke the help command on an individual command to get information about that particular command:
 
 <% code do %>
-gitpusshuten help user
+heavenly help user
 <% end %>
 
 displays something like this:
@@ -64,13 +64,13 @@ Git Pusshu Ten
 
 [Examples]
 
-  gitpusshuten user add to production                # Sets up the user on the remote server for production.
-  gitpusshuten user reconfigure for production       # Reconfigures the user without removing applications.
-  gitpusshuten user remove from production           # Removes the user and all it's applications.
-  gitpusshuten user install-ssh-key on staging       # Installs your ssh key on the server for the user.
-  gitpusshuten user install-root-ssh-key on staging  # Installs your ssh key on the server for the root user.
+  heavenly user add to production                # Sets up the user on the remote server for production.
+  heavenly user reconfigure for production       # Reconfigures the user without removing applications.
+  heavenly user remove from production           # Removes the user and all it's applications.
+  heavenly user install-ssh-key on staging       # Installs your ssh key on the server for the user.
+  heavenly user install-root-ssh-key on staging  # Installs your ssh key on the server for the root user.
 
-For a list of all commands: gitpusshuten help
+For a list of all commands: heavenly help
 For more information, visit: http://gitpusshuten.com/
 <% end %>
 

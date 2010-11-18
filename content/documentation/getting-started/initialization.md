@@ -6,7 +6,7 @@ To initialize Git Pusshuten with your application,
 move into the root directory of your application and run the following command:
 
 <% code do %>
-gitpusshuten initialize
+heavenly initialize
 <% end %>
 
 It'll create the following in your application's root folder:
@@ -23,11 +23,13 @@ So it'll have a hidden folder in your application's root directory. It'll have a
 
 Everything, except `config.rb` and `hooks.rb` will be automatically added to your `.gitignore` file. If the file does not exist, it'll be added upon initialization. This includes the log file as well as anything else that might be created within `app_root/.gitpusshuten/some_dir`.
 
-Alias
+Aliases
 -----
 
-It's worth mentioning that there is an alias available for the long `gitpusshuten` command. Instead of typing `gitpusshuten` every time, you can simply use `ten` instead. For example:
+There are 3 ways to use Git Pusshuten in the CLI:
 
 <% code do %>
+gitpusshuten initialize
+heavenly initialize
 ten initialize
 <% end %>

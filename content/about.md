@@ -33,16 +33,16 @@ Now, with Git Pusshuten, you can easily push your application by **branch**, **t
 
 <% code do %>
   # Pushes develop branch to staging environment so for example you or your client can test it
-  gitpusshuten push branch develop to staging
+  heavenly push branch develop to staging
   
   # Pushes the master branch to production, which releases a new version of your application
-  gitpusshuten push branch master to production
+  heavenly push branch master to production
   
   # Pushes version "1.5.2" (git tag 1.5.2) of your application to production
-  gitpusshuten push tag 1.5.2 to production
+  heavenly push tag 1.5.2 to production
   
   # Pushes your application by a "git ref" to the staging environment
-  gitpusshuten push ref 1466496e89857fd2d9dbdefb13d86d994d1b319a to staging
+  heavenly push ref 1466496e89857fd2d9dbdefb13d86d994d1b319a to staging
 <% end %>
 
 
@@ -72,7 +72,7 @@ Modules are essentially "add-ons" which you can cherry pick for your configurati
   end
 <% end %>
 
-It would add the above deployment hook example I just showed you, without you having to manually define the hook in the hooks file. Additionally it also provides you with a `passenger` CLI command. Using this CLI command you can do various things like manually restart the Passenger instance ( `gitpusshuten passenger restart staging environment` ) and you can even tell it to install Phusion Passenger with either NginX or Apache2 on your server by running `gitpusshuten passenger install to staging environment`. It will then go ahead and install all NginX/Passenger dependency packages and install/configure NginX to work with Git Pusshuten for your application deployments. So as you can see, modules can be very powerful as they can set up your entire environment without you ever having to manually SSH into the server.
+It would add the above deployment hook example I just showed you, without you having to manually define the hook in the hooks file. Additionally it also provides you with a `passenger` CLI command. Using this CLI command you can do various things like manually restart the Passenger instance ( `heavenly passenger restart staging environment` ) and you can even tell it to install Phusion Passenger with either NginX or Apache2 on your server by running `heavenly passenger install to staging environment`. It will then go ahead and install all NginX/Passenger dependency packages and install/configure NginX to work with Git Pusshuten for your application deployments. So as you can see, modules can be very powerful as they can set up your entire environment without you ever having to manually SSH into the server.
 
 Let me show you a combination of modules I recently used to deploy one of my application with:
 
@@ -109,16 +109,16 @@ SSH
 There are of course times when you want to SSH in to your server. Git Pusshuten isn't about configuring 100% of your server, just the majority of the deployment environment, which in some cases, is enough! But, when the need arises, and no module exists, and you don't feel like writing one yourself, then for convenience Git Pusshuten provides you two CLI commands that help you log in through ssh as the deployment user, or the root user.
 
 <% code do %>
-  $(gitpusshuten user login to staging)
-  $(gitpusshuten user login-root to production)
+  $(heavenly user login to staging)
+  $(heavenly user login-root to production)
 <% end %>
 
 And you can, as always, do whatever you want. Update/upgrade your packages. Install other utilities, and such. I believe there is a place for a module that contains the "common" installations, such as **imagemagick**, **sphinx**, **memcached**. Even though you can always ssh into your server to just run the one-line command, it's still nice to have a module that has 'common' provisioning. We could have something like:
 
 <% code do %>
-  gitpusshuten provision memcached for staging
-  gitpusshuten provision sphinx for staging
-  gitpusshuten provision imagemagick for production
+  heavenly provision memcached for staging
+  heavenly provision sphinx for staging
+  heavenly provision imagemagick for production
   # etc. etc. etc.
 <% end %>
 

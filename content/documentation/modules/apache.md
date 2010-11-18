@@ -20,18 +20,18 @@ List of commands
 ================
 
 <% code do %>
-gitpusshuten apache install to staging
-gitpusshuten apache download-configuration from staging
-gitpusshuten apache upload-configuration to staging
-gitpusshuten apache update-configuration for staging
-gitpusshuten apache create-vhost for production
-gitpusshuten apache delete-vhost from production
-gitpusshuten apache upload-vhost to staging environment.
-gitpusshuten apache download-vhost from production
-gitpusshuten apache start staging environment
-gitpusshuten apache stop production environment
-gitpusshuten apache restart production environment
-gitpusshuten apache reload production environment
+heavenly apache install to staging
+heavenly apache download-configuration from staging
+heavenly apache upload-configuration to staging
+heavenly apache update-configuration for staging
+heavenly apache create-vhost for production
+heavenly apache delete-vhost from production
+heavenly apache upload-vhost to staging environment.
+heavenly apache download-vhost from production
+heavenly apache start staging environment
+heavenly apache stop production environment
+heavenly apache restart production environment
+heavenly apache reload production environment
 <% end %>
 
 

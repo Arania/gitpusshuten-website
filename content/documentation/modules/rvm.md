@@ -20,13 +20,13 @@ List of commands
 ================
 
 <% code do %>
-gitpusshuten rvm install on staging
-gitpusshuten rvm update for staging
-gitpusshuten rvm list for staging
-gitpusshuten rvm install-ruby on production
-gitpusshuten rvm uninstall-ruby from production
-gitpusshuten rvm remove-ruby from production
-gitpusshuten rvm set-default-ruby for production
+heavenly rvm install on staging
+heavenly rvm update for staging
+heavenly rvm list for staging
+heavenly rvm install-ruby on production
+heavenly rvm uninstall-ruby from production
+heavenly rvm remove-ruby from production
+heavenly rvm set-default-ruby for production
 <% end %>
 
 install

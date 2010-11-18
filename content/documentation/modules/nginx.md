@@ -20,19 +20,19 @@ List of commands
 ================
 
 <% code do %>
-gitpusshuten nginx install to staging
-gitpusshuten nginx setup staging environment
-gitpusshuten nginx download-configuration from staging
-gitpusshuten nginx upload-configuration to staging
-gitpusshuten nginx update-configuration for staging
-gitpusshuten nginx create-vhost for production
-gitpusshuten nginx delete-vhost from production
-gitpusshuten nginx upload-vhost to staging
-gitpusshuten nginx download-vhost from production
-gitpusshuten nginx start staging environment
-gitpusshuten nginx stop production environment
-gitpusshuten nginx restart production environment
-gitpusshuten nginx reload production environment
+heavenly nginx install to staging
+heavenly nginx setup staging environment
+heavenly nginx download-configuration from staging
+heavenly nginx upload-configuration to staging
+heavenly nginx update-configuration for staging
+heavenly nginx create-vhost for production
+heavenly nginx delete-vhost from production
+heavenly nginx upload-vhost to staging
+heavenly nginx download-vhost from production
+heavenly nginx start staging environment
+heavenly nginx stop production environment
+heavenly nginx restart production environment
+heavenly nginx reload production environment
 <% end %>
 
 

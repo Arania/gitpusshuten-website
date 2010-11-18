@@ -20,11 +20,11 @@ List of commands
 ================
 
 <% code do %>
-gitpusshuten mysql install on staging
-gitpusshuten mysql uninstall from staging
-gitpusshuten mysql add-user to staging
-gitpusshuten mysql remove-user from staging
-gitpusshuten mysql change-root-password on staging
+heavenly mysql install on staging
+heavenly mysql uninstall from staging
+heavenly mysql add-user to staging
+heavenly mysql remove-user from staging
+heavenly mysql change-root-password on staging
 <% end %>
 
 

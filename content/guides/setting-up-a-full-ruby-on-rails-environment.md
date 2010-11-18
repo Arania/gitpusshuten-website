@@ -24,7 +24,7 @@ Next, move into the root of your Ruby on Rails application and initialize Git Pu
 
 <% code do %>
 cd /path/to/Rails.root
-gitpusshuten initialize
+heavenly initialize
 <% end %>
 
 Next, open the `Rails.root/.gitpusshuten/config.rb` and configure it.
@@ -57,7 +57,7 @@ OK! So now we're practically finished with the complete configuration for Git Pu
 The first thing I like to do is to install my ssh key on to the server (under root) so I don't get prompted for my root password every time.
 
 <% code do %>
-gitpusshuten user install-root-ssh-key to staging
+heavenly user install-root-ssh-key to staging
 <% end %>
 
 You will be asked to provide your root password, do so and your ssh key will be installed. Done.
@@ -65,7 +65,7 @@ You will be asked to provide your root password, do so and your ssh key will be 
 Now, let's start installing software! We will start with RVM (Ruby Version Manager) so we can install Ruby to our system.
 
 <% code do %>
-gitpusshuten rvm install to staging
+heavenly rvm install to staging
 <% end %>
 
 You will be prompted to select the initial Ruby version you Git Pusshuten want to install after it finishes installing RVM. I will go with 1.9.2 since that's what we **should** be using today.
@@ -73,7 +73,7 @@ You will be prompted to select the initial Ruby version you Git Pusshuten want t
 Once it has finished installing RVM and Ruby 1.9.2, we will go ahead and install Phusion Passenger.
 
 <% code do %>
-gitpusshuten passenger install to staging
+heavenly passenger install to staging
 <% end %>
 
 You will be prompted to with a choice of either the NginX or the Apache2 web server. We will go with NginX. So, select NginX and wait for it to finish. Once it finishes, it will go ahead and configure your NginX configuration file for your so you get an easy way of managing your vhosts without having to manually ssh into the server every time. Also, it will create an NginX vhost on your local machine in `Rails.root/.gitpusshuten/nginx/staging.vhost`. We will get back to shortly.
@@ -81,7 +81,7 @@ You will be prompted to with a choice of either the NginX or the Apache2 web ser
 Next, let us setup our initial user **gitpusshuten**, as specified in our `Rails.root/.gitpusshuten/config.rb` file.
 
 <% code do %>
-gitpusshuten user add to staging
+heavenly user add to staging
 <% end %>
 
 It will ask you if you are sure you want to setup a deployment user named **gitpusshuten** to the staging environment. Say "yes" and you will be prompted for a password for this user (unless you specified on in the configuration file, then it'll use that one). Once that's done it'll start creating the user on your server and properly configure it to work with Git, RVM and such.
@@ -89,13 +89,13 @@ It will ask you if you are sure you want to setup a deployment user named **gitp
 So the next step is to set up our MySQL server.
 
 <% code do %>
-gitpusshuten mysql install to staging
+heavenly mysql install to staging
 <% end %>
 
 You will be prompted to fill in a root password for the MySQL root user. Choose one and it'll start installing MySQL on your server. Once this is done, let's go ahead and add a new MySQL user to the MySQL database. This again, will be the user we specified in the `Rails.root/.gitpusshuten/config.rb` file, which again, is **gitpusshuten**.
 
 <% code do %>
-gitpusshuten mysql add-user to staging
+heavenly mysql add-user to staging
 <% end %>
 
 You will first be prompted for your MySQL root password. Once that's done, you'll be prompted for a password for this new user. Once you fill in the desired password, it'll go ahead and add the user to the MySQL database. With that, our Ubuntu 10.04 server has been provisioned.
@@ -145,7 +145,7 @@ The only difference is the database name, which is based on the environment we'r
 Let's assume we're working on the **master** branch and we want to deploy this to the **staging** environment. This is simple, just run this:
 
 <% code do %>
-gitpusshuten push branch master to staging
+heavenly push branch master to staging
 <% end %>
 
 Done. After the push, it'll invoke a couple of deploy hooks, which have been added by the modules we included in our configuration file. Let's go over them briefly (in order).
@@ -198,7 +198,7 @@ server {
 I basically just uncommented the `passenger_enabled on;` line. Of course, depending on your domain name, fill in the appropriate one above. Once done, save the file and run the following:
 
 <% code do %>
-gitpusshuten nginx upload-vhost to staging
+heavenly nginx upload-vhost to staging
 <% end %>
 
 This will upload your vhost in the proper NginX vhosts directory Git Pusshuten already set up for us. It'll then restart the NginX web server and there you go! You're up and running on **Ubuntu 10.04** running **NginX**, **Phusion Passenger**, **RVM**, **MySQL** in a managed and Git-based deployment environment.
@@ -210,16 +210,16 @@ Conclusion
 Now, if I wouldn't have explained anything to you guys, this is what you'd end up with for this guide:
 
 <% code do %>
-gem install gitpusshuten
-gitpusshuten initialize
-gitpusshuten user install-root-ssh-key to staging
-gitpusshuten rvm install to staging
-gitpusshuten passenger install to staging
-gitpusshuten user add to staging
-gitpusshuten mysql install to staging
-gitpusshuten mysql add-user to staging
-gitpusshuten push branch master to staging
-gitpusshuten nginx upload-vhost to staging
+gem install heavenly
+heavenly initialize
+heavenly user install-root-ssh-key to staging
+heavenly rvm install to staging
+heavenly passenger install to staging
+heavenly user add to staging
+heavenly mysql install to staging
+heavenly mysql add-user to staging
+heavenly push branch master to staging
+heavenly nginx upload-vhost to staging
 <% end %>
 
 **And we configured the following:**
@@ -230,6 +230,6 @@ gitpusshuten nginx upload-vhost to staging
 That's it. From a **new** Ubuntu 10.04 installation, to a deployed Ruby on Rails application in minutes.
 (I did it in about 10-15 minutes.) And that was mainly waiting on installations to finish. Also, the time it takes to install everything of course depends on your server specs. I was running a small 256meg vps.
 
-If you want to try this out, and don't have a "spare" test server you can do what I did and get an account for Rackspace Cloud Servers which you pay only $0.015 per "hour" for. So you can spin one up for an hour or so to experiment and then shut it down and barely have any costs. Amazon EC2 also offers Micro instances these days so you could also check them out. Otherwise, maybe for your next application when deploying a new server you can try this out.
+You can try this out on a "test" server if you have it. Otherwise boot up a local VM and try it there.
 
 In any case, hope this helps people to deploy and maintain their Ruby on Rails application.
