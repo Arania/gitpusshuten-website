@@ -1,5 +1,7 @@
 ---
 title: "Module: Active Record"
+description: information regarding the git pusshuten active record module
+keywords: git, git pusshuten, ruby, command, active record, rails
 ---
 
 You can add Active Record to the modules in your configuration file, like so:

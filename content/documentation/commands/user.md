@@ -1,5 +1,7 @@
 ---
 title: "Command: User"
+description: information regarding the git pusshuten user command to set up unix users on your server
+keywords: git, git pusshuten, ruby, command, user
 ---
 
 User has a bunch of commands at it's disposal.

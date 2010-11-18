@@ -1,5 +1,7 @@
 ---
 title: "Module: NginX"
+description: information regarding the git pusshuten nginx module to setup a full nginx web server environment
+keywords: git, git pusshuten, ruby, command, nginx, web server
 ---
 
 You can add NginX to the modules in your configuration file, like so:

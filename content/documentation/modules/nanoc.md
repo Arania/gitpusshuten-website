@@ -1,5 +1,7 @@
 ---
 title: "Module: Nanoc"
+description: information regarding the git pusshuten nanoc module to enable simplified nanoc website deployments
+keywords: git, git pusshuten, ruby, command, nanoc, static site generator
 ---
 
 You can add [Nanoc](http://nanoc.stoneship.org/) to the modules in your configuration file, like so:

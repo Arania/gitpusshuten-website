@@ -1,14 +1,15 @@
---- 
+---
 title: About Git Pusshuten (プッシュ点ー)
+description: "Git Pusshuten, a Git based deployment Ruby Gem that simplifies deployment."
+keywords: ruby, git, push, rails, deploy, deployment, ubuntu
 ---
 
 What is Git Pusshuten and what does it do?
 ======================
 
-Git Pusshuten is a (modular) Git-based deployment gem.
-I say **modular** because it's modularity plays a big role in how you define your environment for the deployments.
+Git Pusshuten is a Git-based deployment gem that allows you to define your deployment environment using modules.
 
-**We can divide it up into 3 parts:**
+Please bear with me as I attempt to explain what Git Pusshuten does. : )
 
 Core
 ----
@@ -55,6 +56,7 @@ Hooks are small pieces of shell scripts that are invoked "pre" or "post" deploym
 Modules
 -------
 
+This is where Git Pusshuten actually **defines** your environment.
 Modules are essentially "add-ons" which you can cherry pick for your configuration. By default, all modules are disabled. A module may consist of both a new CLI command and hooks. For example, if I add this to my configuration file:
 
 <% code do %>
@@ -93,20 +95,49 @@ Since I am using the [Nanoc](http://nanoc.stoneship.org/) Ruby-based static site
 
 At this time there aren't a lot of modules, but the most common ones I use are there. Writing these modules is quite easy as well, so anyone can add more, which is one of the idea's behind this project. I actually want to release Git Pusshuten **v0.0.1** and see if the community is interested in using and further improving this project, by adding a lot more modules and asking me what I was smoking while coding some parts of the system and improve it. **; )**
 
-I wrote up a quick guide to show you the steps I took to get my more complex environment up and running in a matter of 10-15 minutes.  
-[Check out the guide](/guides/setting-up-a-full-ruby-on-rails-environment/) to see how I did it.
+I wrote up a quick guide to show you the steps I took to get my more complex environment up and running in a matter of 10-15 minutes. [Check out the guide](/guides/setting-up-a-full-ruby-on-rails-environment/) to see how I did it.
+
+
+SSH
+---
+
+There are of course times when you want to SSH in to your server. Git Pusshuten isn't about configuring 100% of your server, just the majority of the deployment environment. When the need arises, and no module exists, and you don't feel like writing one yourself, then for convenience Git Pusshuten provides you two CLI commands that help you log in through ssh.
+
+<% code do %>
+  $(gitpusshuten user login to staging)
+  $(gitpusshuten user login-root to production)
+<% end %>
+
+And you can, as always, do whatever you want. Update/upgrade your packages. Install other utilities, and such. I believe there is place for a module that contains the "common" installations, such as **imagemagick**, **sphinx**, **memcached**. Even though you can always ssh into your server to just run the one-line command, it's still nice to have a module that has 'common' provisioning. We could have something like:
+
+<% code do %>
+  gitpusshuten provision install memcached to staging
+  gitpusshuten provision install sphinx to staging
+  gitpusshuten provision install imagemagick to production
+  # etc. etc. etc.
+<% end %>
+
+Things that are common for web applications these days.
 
 
 So, who exactly is it for?
 ==========================
 
-Anyone that wants to deploy an application to a remote server. I'd say it's primarily for __Rubyists__, but it can __easily__ be used to deploy non-Ruby applications, like Python apps, PHP apps, or plain HTML like this website.
+Because Git Pusshuten attempts to be a modular deployment tool, you could say it is for **everyone** and **any language**.
+However, I am sure the majority of the user-base will be **Rubyists**.
+
+
+Community == Knowledge # => true
+--------------------------------
+
+My knowledge is limited, hence why I love open source, especially in the Ruby community. People can and will share their knowledge and provide feedback. So if you have any questions, comments, suggestions, want to help, fork and what not, hop over to the [GitHub repository](https://github.com/meskyanichi/gitpusshuten)!
+
 
 
 Requirements
 ============
 
-That you use [Git](http://git-scm.com/) as your SCM tool for your project, and that you have _basic_ knowledge of the [Ruby](http://ruby-lang.org/) programming language. It doesn't _really_ require any Ruby programming, the only Ruby code are the 2 small configuration files, which come in a simple template. So even without Ruby knowledge you should be able to properly configure it.
+That you use [Git](http://git-scm.com/) as your SCM tool for your project, and that you have _basic_ knowledge of the [Ruby](http://ruby-lang.org/) programming language. It doesn't _really_ require any Ruby programming, the only Ruby code are the config.rb and hooks.rb files, which come in a simple templates. So even without Ruby knowledge you should be able to properly configure it.
 
 
 Compatibility
@@ -119,8 +150,7 @@ I use Ubuntu, so I wrote it to work with Ubuntu. It might work for other operati
 Note
 ====
 
-The project is still very young so there aren't a lot of modules to pick from. There is a lot of room for improvement for the current code base, I am sure. But, for me, and maybe for you, this works. I believe it is a good starting point.
-
+The project is still very young so there aren't a lot of modules to pick from. There is a lot of room for improvement for the current code base, I am sure. But, for me, and maybe for you, this works. I believe it is a good starting point. If you're missing modules, feel free to request them, or fork the project and add them yourself.
 
 
 Documentation and Guides

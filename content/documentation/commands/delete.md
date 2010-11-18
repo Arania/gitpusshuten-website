@@ -1,5 +1,7 @@
 ---
 title: "Command: Delete"
+description: information regarding the git pusshuten delete command
+keywords: git, git pusshuten, ruby, command, delete
 ---
 
 Deletes an entire application from the remote server.

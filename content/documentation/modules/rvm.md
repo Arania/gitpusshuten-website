@@ -1,5 +1,7 @@
 ---
 title: "Module: RVM (Ruby Version Manager)"
+description: information regarding the git pusshuten rvm (Ruby Version Manager) module to setup a managable Ruby environment
+keywords: git, git pusshuten, ruby, rvm, ruby version manager, command, versions
 ---
 
 You can add [RVM (Ruby Version Manager)](http://rvm.beginrescueend.com/) to the modules in your configuration file, like so:

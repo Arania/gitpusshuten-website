@@ -1,5 +1,7 @@
 ---
 title: "Module: Apache"
+description: information regarding the git pusshuten apache module to setup a full apache web server environment
+keywords: git, git pusshuten, ruby, command, apache, web server
 ---
 
 You can add Apache to the modules in your configuration file, like so:

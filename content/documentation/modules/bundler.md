@@ -1,5 +1,7 @@
 ---
 title: "Module: Bundler"
+description: information regarding the git pusshuten bundler module
+keywords: git, git pusshuten, ruby, command, bundler, gems, rails
 ---
 
 You can add Bundler to the modules in your configuration file, like so:

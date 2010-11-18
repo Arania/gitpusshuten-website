@@ -1,5 +1,7 @@
 ---
 title: "Command: Help"
+description: information regarding the git pusshuten help command
+keywords: git, git pusshuten, ruby, command, help
 ---
 
 Bring up the main help screen by running:

@@ -1,5 +1,7 @@
 ---
 title: "Command: Initialize"
+description: information regarding the git pusshuten initialize command, how to initialize git pusshuten
+keywords: git, git pusshuten, ruby, command, initialize
 ---
 
 Initializes Git Pusshuten with your working directory. You want to run this command from within the root of your application.

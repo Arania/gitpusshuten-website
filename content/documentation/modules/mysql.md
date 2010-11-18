@@ -1,5 +1,7 @@
 ---
 title: "Module: MySQL"
+description: information regarding the git pusshuten mysql module to setup a mysql server on your server
+keywords: git, git pusshuten, ruby, command, mysql
 ---
 
 You can add MySQL to the modules in your configuration file, like so:

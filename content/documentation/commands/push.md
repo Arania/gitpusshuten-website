@@ -1,5 +1,7 @@
 ---
 title: "Command: Push"
+description: information regarding the git pusshuten push command to push your applications to production
+keywords: git, git pusshuten, ruby, command, push
 ---
 
 Pushes your application to the specified environment.

@@ -1,5 +1,7 @@
 ---
 title: "Module: Passenger"
+description: information regarding the git pusshuten passenger module to setup a full nginx or apache web server environment managed by phusion passenger
+keywords: git, git pusshuten, ruby, command, phusion, passenger, nginx, apache, module, rails
 ---
 
 You can add ([Phusion](http://www.modrails.com/)) Passenger to the modules in your configuration file, like so:

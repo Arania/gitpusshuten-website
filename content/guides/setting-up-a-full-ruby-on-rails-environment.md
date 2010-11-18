@@ -1,9 +1,10 @@
 ---
-title: "Setting up a full Ruby on Rails environment on Ubuntu 10.04 in minutes."
+title: "Setting up a full Ruby on Rails environment on Ubuntu 10.04 with NginX, Phussion Passenger, MySQL, RVM (Ruby Version Manager) in minutes with Git Pusshuten."
 description: "Setting up a full Ruby on Rails environment on Ubuntu 10.04 with NginX, Phusion Passenger and MySQL."
+keywords: git, ruby, rails, deployment, nginx, passenger, ubuntu, mysql
 ---
 
-This guide will demonstrate how to setup a full Ruby on Rails environment on an Ubuntu 10.04 server. We will be provisioning it with the following utilities:
+This guide will demonstrate how to setup a full Ruby on Rails environment on a new Ubuntu 10.04 server in 15 minutes. We will be provisioning it with the following utilities:
 
 * NginX
 * Phusion Passenger
@@ -227,4 +228,8 @@ gitpusshuten nginx upload-vhost to staging
 * NginX's vhost file
 
 That's it. From a **new** Ubuntu 10.04 installation, to a deployed Ruby on Rails application in minutes.
-I did a speed run for myself to see how fast I could get my application up and running, I did it in about 10 minutes. And that was mainly 9 minutes waiting on installations to finish. :) Also, the time it takes to install everything of course depends on your server specs.
+(I did it in about 10-15 minutes.) And that was mainly waiting on installations to finish. Also, the time it takes to install everything of course depends on your server specs. I was running a small 256meg vps.
+
+If you want to try this out, and don't have a "spare" test server you can do what I did and get an account for Rackspace Cloud Servers which you pay only $0.015 per "hour" for. So you can spin one up for an hour or so to experiment and then shut it down and barely have any costs. Amazon EC2 also offers Micro instances these days so you could also check them out. Otherwise, maybe for your next application when deploying a new server you can try this out.
+
+In any case, hope this helps people to deploy and maintain their Ruby on Rails application.

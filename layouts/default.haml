@@ -8,6 +8,7 @@
     %link{:href => "/stylesheets/main.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "/stylesheets/coderay.css", :rel => "stylesheet", :type => "text/css"}/
     %meta{:name => "description", :content => @item[:description]}/
+    %meta{:name => "keywords", :content => @item[:keywords]}/
     %meta{:content => "nanoc 3.1.5", :name => "generator"}/
   %body
     #wrapper
@@ -26,6 +27,9 @@
           %li= custom_link_to 'Documentation', '/documentation/'
           %li= custom_link_to 'Guides', '/guides/'
           %li= custom_link_to 'GitHub', 'http://github.com/meskyanichi/gitpusshuten'
+          %li
+            :erb
+              
       .navigation-graphic
       - if not @item.path =~ /(documentation|guides)/
         .content
@@ -39,7 +43,12 @@
           = render "sidebar_#{$1}"
       %br{:clear=>'all'}/
       .footer
-        Michael van Rooijen
+        .copyright
+          Copyright &copy; 2010 <a href="http://michaelvanrooijen.com/">Michael van Rooijen</a>
+          <a href="http://twitter.com/#!/meskyanichi"><img src="/images/twitter.gif" /></a>
+          <a href="http://michaelvanrooijen.com/"><img src="/images/rss.jpg" /></a>
+        .donate
+          <a href='http://www.pledgie.com/campaigns/13973'><img alt='Click here to lend your support to: Git Pusshuten and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/13973.png?skin_name=chrome' border='0' /></a>
     
     :javascript
       var woo_settings = {idle_timeout:'300000', domain:'gitpusshuten.com'};

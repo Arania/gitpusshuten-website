@@ -1,5 +1,7 @@
 ---
 title: "Command: Remote"
+description: information regarding the git pusshuten remote command
+keywords: git, git pusshuten, ruby, command, remote
 ---
 
 Performs a command in the remote server for the specified environment.
