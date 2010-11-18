@@ -9,10 +9,17 @@ What is Git Pusshuten and what does it do?
 
 Git Pusshuten is a Git-based deployment gem that allows you to define your deployment environment using modules.
 
-Please bear with me as I attempt to explain what Git Pusshuten does. : )
+Please bear with me as I attempt to explain what Git Pusshuten is all about. : )
 
-Core
-----
+**You might want to save this for after you've read the rest of this page first, but if not:**  
+_[Check out this guide](/guides/setting-up-a-full-ruby-on-rails-environment/) if you want to see how I deployed a Ruby on Rails application on a new Ubuntu 10.04 vps running the NginX web server, Phusion Passenger, RVM (Ruby Version Manager), Ruby 1.9.2 and MySQL under 15 minutes, without ever manually SSH'ing into my server, using Git Pusshuten (プッシュ点)._
+
+
+Alright! Let's get going!
+=========================
+
+The Core
+--------
 
 This is basically the bare minimum you get when you haven't enabled any modules. You will get the following:
 
@@ -39,8 +46,8 @@ Now, with Git Pusshuten, you can easily push your application by **branch**, **t
 <% end %>
 
 
-Hooks
------
+Deployment Hooks
+----------------
 
 Hooks are small pieces of shell scripts that are invoked "pre" or "post" deployment. For example, if you are running Phusion Passenger and want to restart the Passenger instance on your server, you could add a simple hook like so:
 
@@ -56,7 +63,7 @@ Hooks are small pieces of shell scripts that are invoked "pre" or "post" deploym
 Modules
 -------
 
-This is where Git Pusshuten actually **defines** your environment.
+This is where Git Pusshuten actually **defines** your environment and starts to get even more interesting.
 Modules are essentially "add-ons" which you can cherry pick for your configuration. By default, all modules are disabled. A module may consist of both a new CLI command and hooks. For example, if I add this to my configuration file:
 
 <% code do %>
@@ -65,7 +72,7 @@ Modules are essentially "add-ons" which you can cherry pick for your configurati
   end
 <% end %>
 
-It would add the above hook example without you manually having to define the hook in the hooks file. Additionally it also provides you with a `passenger` CLI command. Using this CLI command you can do various things like manually restart the Passenger instance ( `gitpusshuten passenger restart staging environment` ) and you can even tell it to install Phusion Passenger with either NginX or Apache2 on your server by running `gitpusshuten passenger install to staging environment`. It will then go ahead and install all NginX/Passenger dependency packages and install/configure NginX to work with Git Pusshuten for your application deployments. So as you can see, modules can be very powerful as they can set up your entire environment without you ever having to manually SSH into the server.
+It would add the above deployment hook example I just showed you, without you having to manually define the hook in the hooks file. Additionally it also provides you with a `passenger` CLI command. Using this CLI command you can do various things like manually restart the Passenger instance ( `gitpusshuten passenger restart staging environment` ) and you can even tell it to install Phusion Passenger with either NginX or Apache2 on your server by running `gitpusshuten passenger install to staging environment`. It will then go ahead and install all NginX/Passenger dependency packages and install/configure NginX to work with Git Pusshuten for your application deployments. So as you can see, modules can be very powerful as they can set up your entire environment without you ever having to manually SSH into the server.
 
 Let me show you a combination of modules I recently used to deploy one of my application with:
 
@@ -80,7 +87,7 @@ Let me show you a combination of modules I recently used to deploy one of my app
   end
 <% end %>
 
-With the above modules in place, it took me only about 10-15 minutes to go from a **new** Ubuntu 10.04 installation, to a fully configured and manageable Ruby on Rails, NginX, Phusion Passenger, RVM and MySQL environment. I never even SSH'd into my server to further configure my vhosts or nginx.conf file, this is all managed by Git Pusshuten. If I want to migrate from Ruby 1.8.7 to 1.9.2 tomorrow, I can do this with Git Pusshuten locally with a single command, again, without manually SSH'ing in to run commands and configure files. I can also update Passenger when a new version releases, all thanks the modules above.
+With the above modules in place, it took me only about 10-15 minutes to go from a **new** Ubuntu 10.04 installation, to a fully configured and manageable Ruby on Rails, NginX, Phusion Passenger, RVM and MySQL environment. I never even SSH'd into my server to further configure my vhosts or nginx.conf file, this is all managed by Git Pusshuten. If I wanted to migrate from Ruby 1.8.7 to 1.9.2 tomorrow, I can do this with Git Pusshuten locally with a single command, again, without manually SSH'ing in to run commands and configure files. I can also update Passenger when a new version releases, all thanks the modules above.
 
 This (static) website ( http://gitpusshuten.com/ ) has been deployed with just these modules:
 
@@ -93,27 +100,25 @@ This (static) website ( http://gitpusshuten.com/ ) has been deployed with just t
 
 Since I am using the [Nanoc](http://nanoc.stoneship.org/) Ruby-based static site generator, I wrote a simple Nanoc module which simply adds a little "post" deploy hook. It took me 30 seconds to write. I use it in combination with the NginX module so I can manage the NginX web server's vhosts through Git Pusshuten.
 
-At this time there aren't a lot of modules, but the most common ones I use are there. Writing these modules is quite easy as well, so anyone can add more, which is one of the idea's behind this project. I actually want to release Git Pusshuten **v0.0.1** and see if the community is interested in using and further improving this project, by adding a lot more modules and asking me what I was smoking while coding some parts of the system and improve it. **; )**
-
-I wrote up a quick guide to show you the steps I took to get my more complex environment up and running in a matter of 10-15 minutes. [Check out the guide](/guides/setting-up-a-full-ruby-on-rails-environment/) to see how I did it.
+At this time there aren't a lot of modules, but the most common ones I use are there. Writing these modules is quite easy as well, so anyone can add more, which is one of the important aspects of this project. I actually want to release Git Pusshuten **v0.0.1** and see if the community is interested in using and further improving this project, by adding a lot more modules, improving existing ones, improving the core, and asking me what I was smoking while coding some parts of the system and provide feedback. **; )**
 
 
 SSH
 ---
 
-There are of course times when you want to SSH in to your server. Git Pusshuten isn't about configuring 100% of your server, just the majority of the deployment environment. When the need arises, and no module exists, and you don't feel like writing one yourself, then for convenience Git Pusshuten provides you two CLI commands that help you log in through ssh.
+There are of course times when you want to SSH in to your server. Git Pusshuten isn't about configuring 100% of your server, just the majority of the deployment environment, which in some cases, is enough! But, when the need arises, and no module exists, and you don't feel like writing one yourself, then for convenience Git Pusshuten provides you two CLI commands that help you log in through ssh as the deployment user, or the root user.
 
 <% code do %>
   $(gitpusshuten user login to staging)
   $(gitpusshuten user login-root to production)
 <% end %>
 
-And you can, as always, do whatever you want. Update/upgrade your packages. Install other utilities, and such. I believe there is place for a module that contains the "common" installations, such as **imagemagick**, **sphinx**, **memcached**. Even though you can always ssh into your server to just run the one-line command, it's still nice to have a module that has 'common' provisioning. We could have something like:
+And you can, as always, do whatever you want. Update/upgrade your packages. Install other utilities, and such. I believe there is a place for a module that contains the "common" installations, such as **imagemagick**, **sphinx**, **memcached**. Even though you can always ssh into your server to just run the one-line command, it's still nice to have a module that has 'common' provisioning. We could have something like:
 
 <% code do %>
-  gitpusshuten provision install memcached to staging
-  gitpusshuten provision install sphinx to staging
-  gitpusshuten provision install imagemagick to production
+  gitpusshuten provision memcached for staging
+  gitpusshuten provision sphinx for staging
+  gitpusshuten provision imagemagick for production
   # etc. etc. etc.
 <% end %>
 
@@ -130,8 +135,7 @@ However, I am sure the majority of the user-base will be **Rubyists**.
 Community == Knowledge # => true
 --------------------------------
 
-My knowledge is limited, hence why I love open source, especially in the Ruby community. People can and will share their knowledge and provide feedback. So if you have any questions, comments, suggestions, want to help, fork and what not, hop over to the [GitHub repository](https://github.com/meskyanichi/gitpusshuten)!
-
+My knowledge is limited, which is why I love open source, especially in the Ruby community. People can and usually will share their knowledge and provide feedback to help and improve projects. So if you have any questions, comments, suggestions, want to help, fork and what not, hop on over to the [GitHub repository](https://github.com/meskyanichi/gitpusshuten)!
 
 
 Requirements
@@ -153,7 +157,7 @@ Note
 The project is still very young so there aren't a lot of modules to pick from. There is a lot of room for improvement for the current code base, I am sure. But, for me, and maybe for you, this works. I believe it is a good starting point. If you're missing modules, feel free to request them, or fork the project and add them yourself.
 
 
-Documentation and Guides
-========================
+Documentation, Guides and the Repository
+========================================
 
 Check out the [Guides](/guides/) and [Documentation](/documentation/) for more info. The project's repository is hosted at [GitHub](https://github.com/meskyanichi/gitpusshuten).
