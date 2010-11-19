@@ -7,7 +7,7 @@ keywords: ruby, git, push, rails, deploy, deployment, ubuntu
 What is Git Pusshuten and what does it do?
 ======================
 
-Git Pusshuten is a Git-based deployment gem that allows you to define your deployment environment using modules.
+A Git-based application deployment tool that allows you to define your environment by utilizing modules and provision your server with basic deployment needs.
 
 <br />
 
