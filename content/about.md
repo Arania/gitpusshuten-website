@@ -9,14 +9,30 @@ What is Git Pusshuten and what does it do?
 
 Git Pusshuten is a Git-based deployment gem that allows you to define your deployment environment using modules.
 
+<br />
+
+<iframe src="http://player.vimeo.com/video/16976280" width="850" height="400" frameborder="0"></iframe>
+
+**In this screencast I show you how to set up a server with the following with Git Pusshuten:**
+
+* RVM (Ruby Version Manager)
+* Ruby 1.9.2
+* Phusion Passenger
+* NginX web server
+* MySQL database
+* UNIX deployment user for Git Pusshuten
+
+And deploy a standard "you are riding the rails" application to it.
+
+*Note that some installations such as the Ruby 1.9.2, Phusion Passenger and NginX installation have been fast-forwarded in this screencast. They may take several minutes, depending on your server specifications.*
+
+[Check out this guide](/guides/setting-up-a-full-ruby-on-rails-environment/) where I go more into detail about the above screencast.
+
+
+Read on if you want to know more about Git Pusshuten
+====================================================
+
 Please bear with me as I attempt to explain what Git Pusshuten is all about. : )
-
-**You might want to save this for after you've read the rest of this page first, but if not:**  
-_[Check out this guide](/guides/setting-up-a-full-ruby-on-rails-environment/) if you want to see how I deployed a Ruby on Rails application on a new Ubuntu 10.04 vps running the NginX web server, Phusion Passenger, RVM (Ruby Version Manager), Ruby 1.9.2 and MySQL under 15 minutes, without ever manually SSH'ing into my server, using Git Pusshuten (プッシュ点)._
-
-
-Alright! Let's get going!
-=========================
 
 The Core
 --------
@@ -92,7 +108,7 @@ With the above modules in place, it took me only about 10-15 minutes to go from 
 This (static) website ( http://gitpusshuten.com/ ) has been deployed with just these modules:
 
 <% code do %>
-  module do |m|
+  modules do |m|
     m.add :nginx
     m.add :nanoc
   end
