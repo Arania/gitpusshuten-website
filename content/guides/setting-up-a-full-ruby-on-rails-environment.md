@@ -31,14 +31,11 @@ Next, open the `Rails.root/.gitpusshuten/config.rb` and configure it.
 
 <% code do %>
 pusshuten 'My Application', :staging, :production do
-  authorize do |a|
-    a.user       = 'gitpusshuten'
-    a.ip         = '123.45.678.90'
-    a.port       = '22'
-  end
-
-  applications do |a|
-    a.path = '/var/applications/'
+  configure do |c|
+    c.user   = 'gitpusshuten'
+    c.ip     = '123.45.678.90'
+    c.port   = '22'
+    c.path   = '/var/applications/'
   end
 
   modules do |m|
