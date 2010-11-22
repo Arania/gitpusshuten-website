@@ -14,7 +14,7 @@ which looks something like this:
 
 <% code do %>
 Git Pusshu Ten
-     プッシュ点
+     プッシュ天
 
 [Alias]
 
@@ -24,12 +24,12 @@ Git Pusshu Ten
 
   delete      Deletes the application of the specified environment.
   help        Displays the command list, or the help screen for a specific command.
-  initialize  Initializes Git Pusshu Ten (プッシュ点) with the working directory.
+  initialize  Initializes Git Pusshu Ten (プッシュ天) with the working directory.
   push        Pushes a branch, tag or ref to the specified environment.
   remote      Performs a command on the remote server for the specified environment from the application root.
   setup       Setups up various things for you, based on the .gitpusshuten/config.rb file.
   user        Interacts with users, based on the <app_root>/.gitpusshuten/config.rb file.
-  version     Displays the current version of Git Pusshu Ten (プッシュ点).
+  version     Displays the current version of Git Pusshu Ten (プッシュ天).
 
 [Command Specific Help]
 
@@ -48,7 +48,7 @@ displays something like this:
 
 <% code do %>
 Git Pusshu Ten
-     プッシュ点
+     プッシュ天
 
 [Command]
 

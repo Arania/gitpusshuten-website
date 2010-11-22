@@ -1,15 +1,25 @@
 ---
-title: About Git Pusshuten (プッシュ点ー)
+title: About Git Pusshuten (プッシュ天ー)
 description: "Git Pusshuten, a Git based deployment Ruby Gem that simplifies deployment."
 keywords: ruby, git, push, rails, deploy, deployment, ubuntu
 ---
 
 What is Git Pusshuten and what does it do?
-======================
+==========================================
 
-A Git-based application deployment tool that allows you to define your environment by utilizing modules and provision your server with basic deployment needs.
+It is a Git-based application deployment tool that allows you to define your environment by utilizing modules and provision your server with basic deployment needs.
 
-<br />
+**Your first impression:** *"What's up with the name?"*
+
+Git = Git  
+Pusshu = Push ( プッシュ )  
+Ten = Heaven ( 天 )
+
+I have seen "git deploy", "gploy", "deployer" and similar names.  
+This is my attempt at trying to be unique. But, in the end, it's just a name. Love it or hate it.  
+Regardless of the name, I do hope it is useful to you if you're looking for a new approach at (web) application deployments!  
+
+**Check out the video below!**
 
 <iframe src="http://player.vimeo.com/video/16976280" width="850" height="400" frameborder="0"></iframe>
 
