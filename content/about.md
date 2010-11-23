@@ -1,5 +1,5 @@
 ---
-title: About Git Pusshuten (プッシュ天ー)
+title: About Git Pusshuten (プッシュ天)
 description: "Git Pusshuten, a Git based deployment Ruby Gem that simplifies deployment."
 keywords: ruby, git, push, rails, deploy, deployment, ubuntu
 ---
