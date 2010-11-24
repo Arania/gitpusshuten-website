@@ -21,7 +21,7 @@ Regardless of the name, I do hope it is useful to you if you're looking for a ne
 
 **Check out the video below!**
 
-<iframe src="http://player.vimeo.com/video/16976280" width="850" height="400" frameborder="0"></iframe>
+<iframe src="http://player.vimeo.com/video/16976280" width="750" height="425" frameborder="0"></iframe>
 
 **In this screencast I show you how to set up a server with the following with Git Pusshuten:**
 

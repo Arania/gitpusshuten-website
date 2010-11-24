@@ -20,17 +20,14 @@
         .text
           %strong Heavenly
           Git-based
-          %strong Deployment
-      .navigation
-        %ul
-          %li= custom_link_to 'About', '/about/'
-          %li= custom_link_to 'Documentation', '/documentation/'
-          %li= custom_link_to 'Guides', '/guides/'
-          %li= custom_link_to 'GitHub', 'http://github.com/meskyanichi/gitpusshuten'
-          %li
-            :erb
-              
+          %strong Deployment              
       .navigation-graphic
+        .navigation
+          = custom_link_to 'About', '/about/'
+          = custom_link_to 'Documentation', '/documentation/'
+          = custom_link_to 'Guides', '/guides/'
+          = custom_link_to 'GitHub', 'http://github.com/meskyanichi/gitpusshuten'
+        
       - if not @item.path =~ /(documentation|guides)/
         .content
           = yield
@@ -43,12 +40,16 @@
           = render "sidebar_#{$1}"
       %br{:clear=>'all'}/
       .footer
-        .copyright
-          Copyright &copy; 2010 <a href="http://michaelvanrooijen.com/">Michael van Rooijen</a>
-          <a href="http://twitter.com/#!/meskyanichi"><img src="/images/twitter.gif" /></a>
-          <a href="http://michaelvanrooijen.com/"><img src="/images/rss.jpg" /></a>
-        .donate
-          <a href='http://www.pledgie.com/campaigns/13973'><img alt='Click here to lend your support to: Git Pusshuten and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/13973.png?skin_name=chrome' border='0' /></a>
+        .top
+        .bottom
+          .copyright
+            .text
+              Copyright &copy; 2010 <a href="http://michaelvanrooijen.com/">Michael van Rooijen</a>
+            .images
+              <a href="http://twitter.com/#!/meskyanichi"><img src="/images/twitter.gif" /></a>
+              <a href="http://michaelvanrooijen.com/"><img src="/images/rss.gif" /></a>
+          .donate
+            <a href='http://www.pledgie.com/campaigns/13973'><img alt='Click here to lend your support to: Git Pusshuten and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/13973.png?skin_name=chrome' border='0' /></a>
     
     :javascript
       var woo_settings = {idle_timeout:'300000', domain:'gitpusshuten.com'};

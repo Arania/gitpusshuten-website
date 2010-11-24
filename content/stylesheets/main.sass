@@ -1,22 +1,29 @@
 $black: #2b2b2b
 $gray: #c3c3c3
 $dark-gray: #5c5c5c
+$light-gray: #d3d3d3
 $red: #f30
 $orange: #f90
+$white: #ffffff
+$blue: #2da6ef
+$light-blue: #58b6ef
 
+html
+  background: #1f2229
+  
 body
   font-family: helvetica, tahoma, arial
-  background: #ffffff
+  background: #1f2229
   color: $black
   font-size: 1em
   
 a
   text-decoration: none
   &:link, &:visited
-    color: $red
-    border-bottom: 1px dotted #f30
+    color: $light-blue
+    border-bottom: 1px dotted $light-blue
   &:hover
-    color: $orange
+    color: $blue
 
 strong
   font-weight: bold
@@ -25,45 +32,62 @@ em
   font-style: italic
 
 #wrapper
-  width: 900px
+  width: 800px
   margin: auto
   
   .heading
     width: 290px
-    margin: 50px auto 0px auto
+    margin: 0px auto 0px auto
+    padding: 50px 0px 0px 0px
     text-align: right
     h1
       font-size: 2.8em
+      color: $white
     h2
       font-size: 1.25em
+      color: $white
+    
     .highlight
-      color: $gray
+      color: #cbcbcb
     .text
       text-align: left
       margin: 5px 0px 0px 9px
-    
-  .navigation
-    margin: 30px 0px 0px 0px
-    text-align: center
-    ul
-      li
-        display: inline
-        padding: 5px
-        a
-          font-size: 1.2em
-          color: $red
-          &:hover
-            color: $black
-        span.active
-          font-size: 1.5em
+      color: #cbcbcb
+      strong
+        color: $white
+  
   .navigation-graphic
-    background-image: url('/images/heading.gif')
+    background-image: url('/images/navigation-background.gif')
     background-repeat: no-repeat
-    height: 50px
-    margin: 0px 0px 0px 0px
+    margin: 15px auto 0px auto
+    height: 99px
+    width: 600px
+    .navigation
+      padding: 30px 0px 0px 45px
+      text-align: center
+      a, span
+        display: block
+        float: left
+        width: 116px
+        height: 19px
+        font-size: 0.75em
+        color: $white
+        border: none
+        padding: 4px 0px 0px 0px
+        margin: 0px 5px 0px 5px
+        background-image: url(/images/navigation-link.png)
+        background-repeat: no-repeat
+      a:hover, span.active
+        background-image: url(/images/navigation-link-hover.png)
+        background-repeat: no-repeat
+        color: $dark-gray
+
   .content
+    color: $light-gray
     padding: 0px 10px 0px 25px
     margin: 0px 0px 25px 0px
+    h1, h2, h3, strong
+      color: $white
     h1, h2
       font-size: 1.5em
       margin: 30px 0px 10px 0px
@@ -88,33 +112,48 @@ em
         
     .details
       float: left
-      width: 550px
+      width: 525px
     .sidebar
       float: right
-      width: 300px
+      width: 225px
       
       ul
+        margin: 10px 0px 10px 5px
+        
         li
           list-style-type: none
           font-size: 1.2em
         ul
+          margin: 10px 0px 20px 20px
+          
           li
             list-style-type: disc
             margin: 0px 0px 5px 5px
             font-size: 1em
+            font-size: 0.9em
   .footer
-    height: 100px
-    width: 850px
-    padding: 10px 20px 20px 20px
-    margin: 25px 0px 0px 25px
-    border-top: 1px solid $gray
-    .copyright
-      float: left
-      padding: 10px 0px 0px 0px
-      a
-        border: none
-    .donate
-      float: right
-      padding: 5px 0px 0px 0px
-      a
-        border: none
+    color: $white
+    width: 800px
+    padding: 20px 20px 30px 20px
+    margin: 0px auto 0px auto
+    .top
+      height: 10px
+      border-bottom: 4px solid #292d37
+      background-color: #22252d
+    .bottom
+      padding: 10px 0px 50px 0px
+      .copyright
+        text-align: right
+        float: left
+        padding: 10px 0px 0px 0px
+        a
+          border: none
+        .images
+          margin: 8px 0px 0px 0px
+          a
+            margin: 0px 0px 0px 5px
+      .donate
+        float: right
+        padding: 10px 0px 0px 0px
+        a
+          border: none
