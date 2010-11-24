@@ -1,0 +1,7 @@
+.sidebar
+  %ul
+    %li Update history
+    %ul
+      %li= link_to 'Latest updates', '/updates/'
+      - find_and_sort_updates(@items).each do |item| 
+        %li= link_to item[:title], item.identifier

@@ -11,6 +11,8 @@
     %meta{:name => "keywords", :content => @item[:keywords]}/
     %meta{:content => "nanoc 3.1.5", :name => "generator"}/
   %body
+    #github
+      <a href="https://github.com/meskyanichi/gitpusshuten"><img src="/images/github.gif" /></a>
     #wrapper
       .heading
         %h2 プッシュ天
@@ -26,10 +28,10 @@
           = custom_link_to 'About', '/about/'
           = custom_link_to 'Documentation', '/documentation/'
           = custom_link_to 'Guides', '/guides/'
-          = custom_link_to 'GitHub', 'http://github.com/meskyanichi/gitpusshuten'
+          = custom_link_to 'Updates', '/updates/'
         
-      - if not @item.path =~ /(documentation|guides)/
-        .content
+      - if not @item.path =~ /(documentation|guides|updates)/
+        .content.fixed_margin
           = yield
       - else
         .content

@@ -24,3 +24,19 @@ def custom_link_to(name, url)
     link_to(name, url)
   end
 end
+
+def find_and_sort_updates(items)
+  require 'date'
+  
+  menu_items = []
+  items.each do |item|
+    if item.identifier =~ /\/updates\/.+\//
+      menu_items << item
+    end
+  end  
+  
+  menu_items.sort_by do |a|
+    time = a[:date]
+    time.is_a?(String) ? Date.parse(time) : time
+  end.reverse
+end
