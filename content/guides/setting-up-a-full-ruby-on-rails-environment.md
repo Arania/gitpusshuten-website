@@ -207,7 +207,7 @@ Conclusion
 Now, if I wouldn't have explained anything to you guys, this is what you'd end up with for this guide:
 
 <% code do %>
-gem install heavenly
+gem install gitpusshuten
 heavenly initialize
 heavenly user install-root-ssh-key to staging
 heavenly rvm install to staging
